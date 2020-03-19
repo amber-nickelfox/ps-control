@@ -1,0 +1,61 @@
+<html>
+    <body>
+    <style>
+  button {
+    border: 1px solid #2ecc71;
+    background-color: #2ecc71;
+    padding: 8px 16px;
+    font-size: 20px;
+    border-radius: 25px;
+    outline: none;
+    cursor: pointer;
+    color: white;
+    width: 200px;
+    height: 50px;
+  }
+​
+​
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
+​
+  .margin-right {
+    margin-right: 40px;
+  }
+​
+  button:hover {
+    opacity: 0.7;
+  }
+</style>
+<div class="button-container">
+    <center><a href="#" id="previous"><button class="margin-right">
+    &#171; Previous </button></a>
+
+      <a href="#" id="next"><button class="margin-left">
+    &#171; Next </button></a></center>
+</div>
+    </body>
+   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type=text/javascript>
+        $(function() {
+          $('a#previous').bind('click', function() {
+            $.getJSON('/set-back',
+                function(data) {
+              //do nothing
+            });
+            return false;
+          });
+        });
+        $(function() {
+          $('a#next').bind('click', function() {
+            $.getJSON('/set-next',
+                function(data) {
+              //do nothing
+            });
+            return false;
+          });
+        });
+    </script>
+</html>
