@@ -3,6 +3,7 @@ from flask import Flask, jsonify, render_template, session
 
 SERVER_PORT = '8080'  # modify this to set server to run on a different port
 
+COMMAND = None
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'my-powerpoint-game-is-strong'
 app.debug = False
@@ -10,29 +11,30 @@ app.debug = False
 
 @app.route("/", methods=['GET'])
 def index():
+    global COMMAND
     return render_template('index.html')
 
 
 @app.route("/command/")
 def command():
-    keyboard_command = session['command']
-    return_value = jsonify({'command': keyboard_command})
-    return return_value
+    global COMMAND
+    value = jsonify({'command': COMMAND})
+    COMMAND = None
+    return value
 
 
 @app.route("/set-next/")
 def set_next():
-    keyboard_command = 'next'
-    session['command'] = keyboard_command
-    return jsonify({'command': keyboard_command})
+    global COMMAND
+    COMMAND = 'next'
+    return jsonify({'command': COMMAND})
 
 
 @app.route("/set-back/")
 def set_back():
-    keyboard_command = 'back'
-    session['command'] = keyboard_command
-    print("User press back")
-    return jsonify({'command': keyboard_command})
+    global COMMAND
+    COMMAND = 'back'
+    return jsonify({'command': COMMAND})
 
 
 def main(argv):
