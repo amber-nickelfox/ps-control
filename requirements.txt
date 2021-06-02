@@ -10,6 +10,6 @@ keyboard==0.13.4
 MarkupSafe==1.1.1
 psutil==5.7.0
 requests==2.23.0
-urllib3==1.25.8
+urllib3==1.26.5
 Werkzeug==1.0.0
 windownow==0.9.6
